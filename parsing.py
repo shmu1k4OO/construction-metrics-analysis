@@ -106,6 +106,7 @@ def graph_plotting(counts_data, N):
     plt.xlabel("Процент роста чистой прибыли, %", fontsize=12)
     plt.ylabel("Количество компаний", fontsize=12)
     plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.savefig('images/profit_growth.png', dpi=300, bbox_inches='tight')
     plt.show()
 
 def median_ebit_graph(data):
@@ -122,6 +123,7 @@ def median_ebit_graph(data):
     plt.xlabel('Год', fontsize=12)
     plt.ylabel('Медианный EBIT (в тыс. руб.)', fontsize=12)
     plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.savefig('images/ebit_dynamics.png', dpi=300, bbox_inches='tight')
     plt.show()
 
 def distribution_ebit_graph(data):
@@ -143,5 +145,6 @@ def distribution_ebit_graph(data):
     plt.ylabel('Количество компаний', fontsize=12)
     plt.legend()
     plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.savefig('images/ebit_distribution.png', dpi=300, bbox_inches='tight')
     plt.show()
 
