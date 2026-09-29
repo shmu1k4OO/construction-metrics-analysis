@@ -137,9 +137,9 @@ def distribution_ebit_graph(data):
 
     plt.figure(figsize=(12, 6))
     plt.hist(data_filtred[ebit_cols[-1]], bins=50, color='seagreen', edgecolor='black', alpha=0.8)
-    plt.axvline(median_val, color='red', linestyle='dashed', linewidth=2, label=f'Медиана: {int(median_val)} руб.')
+    plt.axvline(median_val, color='red', linestyle='dashed', linewidth=2, label=f'Медиана: {int(median_val)} тыс. руб.')
     plt.title(f'Распределение операционной прибыли (EBIT) среди компаний в {last_year} году', fontsize=14)
-    plt.xlabel('EBIT (руб.)', fontsize=12)
+    plt.xlabel('EBIT (тыс. руб.)', fontsize=12)
     plt.ylabel('Количество компаний', fontsize=12)
     plt.legend()
     plt.grid(axis='y', linestyle='--', alpha=0.7)

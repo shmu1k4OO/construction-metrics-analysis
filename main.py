@@ -49,7 +49,7 @@ if __name__ == "__main__":
             logging.warning(f"[{count}/{total}] Ошибка данных для ИНН {inn}: {e}")
 
         if count % 10 == 0:
-            print(f"Обаботано: {count/total}")
+            print(f"Обработано: {count/total}")
 
     if not result:
         logging.critical("Не удалось собрать данные ни по одной компании. Работа прервана.")
