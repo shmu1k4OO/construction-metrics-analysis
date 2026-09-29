@@ -59,9 +59,11 @@ if __name__ == "__main__":
     logging.info(f"Сбор завершён. Успешно получены данные по {len(result)} компаниям.")
 
     df_results = parsing.build_dataframe(result)
+    parsing.median_ebit_graph(df_results)
+    parsing.distribution_ebit_graph(df_results)
+
     df_results = parsing.analys_for_growth(df_results, N)
     counts_data = parsing.build_counts_data(df_results, N)
-
     parsing.graph_plotting(counts_data, N)
 
 

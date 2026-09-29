@@ -108,4 +108,40 @@ def graph_plotting(counts_data, N):
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.show()
 
-    
+def median_ebit_graph(data):
+
+    ebit_cols = sorted([col for col in data.columns if col.startswith('EBIT_')])
+    median_result = data[ebit_cols].median()
+
+    years = [col.split('_')[1] for col in ebit_cols]
+
+    plt.figure(figsize=(10, 6)),
+    plt.bar(years, median_result.values, color='lightblue', alpha=0.6)
+    plt.plot(years, median_result.values, color='navy', marker='o', linewidth=2)
+    plt.title('Динамика медианного EBIT строительных МСП по годам', fontsize=14)
+    plt.xlabel('Год', fontsize=12)
+    plt.ylabel('Медианный EBIT (в тыс. руб.)', fontsize=12)
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.show()
+
+def distribution_ebit_graph(data):
+
+    ebit_cols = sorted([col for col in data.columns if col.startswith('EBIT_')])
+    last_year = ebit_cols[-1].split('_')[1]
+
+    q_low = data[ebit_cols[-1]].quantile(0.05)
+    q_high = data[ebit_cols[-1]].quantile(0.95)
+
+    data_filtred = data[(data[ebit_cols[-1]] >= q_low) & (data[ebit_cols[-1]] <= q_high)]
+    median_val = data_filtred[ebit_cols[-1]].median()
+
+    plt.figure(figsize=(12, 6))
+    plt.hist(data_filtred[ebit_cols[-1]], bins=50, color='seagreen', edgecolor='black', alpha=0.8)
+    plt.axvline(median_val, color='red', linestyle='dashed', linewidth=2, label=f'Медиана: {int(median_val)} руб.')
+    plt.title(f'Распределение операционной прибыли (EBIT) среди компаний в {last_year} году', fontsize=14)
+    plt.xlabel('EBIT (руб.)', fontsize=12)
+    plt.ylabel('Количество компаний', fontsize=12)
+    plt.legend()
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.show()
+
