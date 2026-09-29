@@ -4,18 +4,18 @@ import matplotlib.pyplot as plt
 import logging
 
 
-# def data_preparation():
+def data_preparation():
 
-#     df = pd.read_excel('Database.xlsx', header=2)
-#     df = df.dropna(how='all')
-#     df.columns = df.columns.str.strip()
-#     df = df[df['Тип субъекта'] == 'Юридическое лицо']
-#     df = df[df['Категория'].isin(['Малое предприятие', 'Среднее предприятие'])]
-#     df = df[df['Основной вид деятельности'].str.startswith('41.20')]
-#     if '№ п/п' in df.columns:
-#         df = df.drop(columns=['№ п/п'])
-#     df = df.reset_index(drop=True)
-#     df.to_csv('cleaned_reestr.csv', index=False, encoding='utf-8-sig')
+    df = pd.read_excel('Database.xlsx', header=2)
+    df = df.dropna(how='all')
+    df.columns = df.columns.str.strip()
+    df = df[df['Тип субъекта'] == 'Юридическое лицо']
+    df = df[df['Категория'].isin(['Малое предприятие', 'Среднее предприятие'])]
+    df = df[df['Основной вид деятельности'].str.startswith('41.20')]
+    if '№ п/п' in df.columns:
+        df = df.drop(columns=['№ п/п'])
+    df = df.reset_index(drop=True)
+    df.to_csv('cleaned_reestr.csv', index=False, encoding='utf-8-sig')
 
 def get_inn():
 
